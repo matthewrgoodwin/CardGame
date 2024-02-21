@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Card Game</h1>
+    <p>Enter your list of cards below and calculate your score!</p>
+    <p>Note: Card list must be entered as a comma separated list with no spaces (e.g. "2D,3H")</p>
+</div>
+<div class="text-center">
+    <img src="images/ace_of_spades.png" />
+</div>
+<div class="row text-center py-2">
+    <form method="post">
+        <div>
+            <label>Card List:</label>
+            <input asp-for="CardList" />
+            <input type="submit" />
+            @Html.AntiForgeryToken()
+        </div>
+    </form>
+</div>
+@if (Model.DisplayString?.Length > 0)
+{
+    <div class="row text-center">
+        <p>Result: @Model.DisplayString</p>
+    </div>
+}
+
